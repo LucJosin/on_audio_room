@@ -1,4 +1,4 @@
-## [2.0.0.beta.0] - [07.26.2021]
+## [2.0.0-beta.0] - [07.26.2021]
 ### Documentation
 - Updated `README` documentation.
 
