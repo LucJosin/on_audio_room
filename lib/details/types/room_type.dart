@@ -1,16 +1,16 @@
 part of on_audio_room;
 
-///[RoomType] will define which room you need to use.
+/// [RoomType] will define which room you need to use.
 enum RoomType {
-  ///Favorites room.
+  /// Favorites room.
   FAVORITES,
 
-  ///LastPlayed room.
+  /// LastPlayed room.
   LAST_PLAYED,
 
-  ///MostPlayed room.
+  /// MostPlayed room.
   MOST_PLAYED,
 
-  ///Playlist room.
+  /// Playlist room.
   PLAYLIST,
 }
