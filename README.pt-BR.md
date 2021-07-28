@@ -1,12 +1,13 @@
 # on_audio_room
 [![Pub.dev](https://img.shields.io/pub/v/on_audio_room?color=9cf&label=Pub.dev&style=flat-square)](https://pub.dev/packages/on_audio_room)
-[![Platform](https://img.shields.io/badge/Platform-Android-9cf?logo=android&style=flat-square)](https://www.android.com/)
+[![Pub.dev](https://img.shields.io/pub/v/on_audio_room?color=9cf&include_prereleases&label=Pub.dev&style=flat-square)](https://pub.dev/packages/on_audio_room/versions/2.0.0-beta.0)
+[![Platforms](https://img.shields.io/badge/Platforms-Android%20%7C%20IOS%20%7C%20Web%20%7C%20MacOs%20%7C%20Linux%20%7C%20Windows-9cf?&style=flat-square)](https://www.android.com/)
 [![Flutter](https://img.shields.io/badge/Language-Flutter%20%7C%20Null--Safety-9cf?logo=flutter&style=flat-square)](https://www.flutter.dev/)
-[![Kotlin](https://img.shields.io/badge/Language-Kotlin-9cf?logo=kotlin&style=flat-square)](https://kotlinlang.org/)
 
-`on_audio_room` é um [Flutter](https://flutter.dev/) Plugin usado para criar um banco de dados para guardar informações dos audios [Favoritos, Playlist Interna, Mais Tocadas, etc...]. <br>
 
-Esse Plugin funciona como uma "extenção" para [on_audio_query](https://github.com/LucasPJS/on_audio_query) e alguns métodos irão depender dele.
+`on_audio_room` é um [Flutter](https://flutter.dev/) Package usado para criar um "quarto" para guardar informações dos audios [Favoritos, Playlist Interna, Mais Tocadas, etc...]. <br>
+
+Esse Package funciona como uma "extenção" para [on_audio_query](https://github.com/LucasPJS/on_audio_query) e alguns métodos irão depender dele.
 
 ## Ajuda:
 
@@ -33,19 +34,8 @@ Adicione o seguinte codigo para seu `pubspec.yaml`:
 dependencies:
   on_audio_room: ^1.0.1+1
   # Ou você pode testar a versão beta
-  # on_audio_room: 2.0.0-beta.0
+  # on_audio_room: 2.0.0-beta.1
 ```
-
-<!-- #### Request Permission:
-If you want to use the built-in request permission, will need add the following code to your `AndroidManifest.xml`
-```xml
-<manifest> ...
-
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
-</manifest>
-``` -->
 
 ## Algumas qualidades:
 
@@ -57,7 +47,7 @@ If you want to use the built-in request permission, will need add the following 
 ## TODO:
 
 * Adicionar uma melhor performace para todo o plugin.
-* Criar métodos para IOS.
+* Adicionar `[Qualidades]`.
 * Arrumar erros.
 
 ## Como usar:
@@ -67,53 +57,51 @@ OnAudioRoom() // O comando principal para usar o plugin.
 ```
 Todos os tipos de métodos nesse plugin:
 
-### Métodos para o banco de dados
+### Métodos para o "quarto"
 
 |  Methods  |   Parameters   |   Return   |
 |--------------|-----------------|-----------------|
-| [`setDatabaseName`]() | `(String)` | `bool` | <br>
-| [`setDatabaseLimit`]() | `(int)` | `bool` | <br>
-| [`getDatabaseName`]() |  | `String` | <br>
-| [`getDatabaseLimit`]() |  | `int` | <br>
-| [`getDatabaseStatus`]() |  | `bool` | <br>
-| [`resetDatabaseName`]() |  | `bool` | <br>
-| [`resetDatabaseLimit`]() |  | `bool` | <br>
-| [`resetAllDatabase`]() |  | `bool` | <br>
-| [`closeDatabase`]() |  | `bool` | <br>
+| [`initRoom`]() | `(RoomType, SubDir?)` | `bool` | <br>
+| [`closeRoom`]() |  | `bool` | <br>
+| [`deleteRoomFile`]() |  | `bool` | <br>
+| [`getRoomInfo`]() |  | `RoomEntity` | <br>
+| [`clearAll`]() |  | `bool` | <br>
 
-### Global métodos
+### Global methods
 
 |  Methods  |   Parameters   |   Return   |
 |--------------|-----------------|-----------------|
-| [`addTo`]() | `(RoomType, Entity, PlaylistId?)` | `int` | <br>
-| [`addAllTo`]() | `(RoomType, Entity, PlaylistId?)` | `List<int>` | <br>
-| [`deleteFrom`]() | `(RoomType, SongId, PlaylistId?)` | `bool` | <br>
-| [`deleteAllFrom`]() | `(RoomType)` | `bool` | <br>
-| [`checkIn`]() | `(RoomType, SongId, PlaylistId?)` | `bool` | <br>
-| [`queryAllIdsFrom`]() | `(RoomType, PlaylistId?)` | `List<int>` | <br>
+| [`addTo`]() | `(RoomType, Entity, PlaylistKey?)` | `int?` | <br>
+| [`addAllTo`]() | `(RoomType, Entity, PlaylistKey?)` | `List<int>` | <br>
+| [`updateRoom`]() | `(RoomType, Entity)` | `bool` | <br>
+| [`deleteFrom`]() | `(RoomType, EntityKey, PlaylistKey?)` | `bool` | <br>
+| [`deleteAllFrom`]() | `(RoomType, EntityKeys, PlaylistKey?)` | `bool` | <br>
+| [`clearRoom`]() | `(RoomType)` | `bool` | <br>
+| [`checkIn`]() | `(RoomType, EntityKey, PlaylistKey?)` | `bool` | <br>
 
-### Query métodos
-
-|  Methods  |   Parameters   |   Return   |
-|--------------|-----------------|-----------------|
-| [`queryFromFavorites`]() | `(SongId)` | `FavoritesEntity` | <br>
-| [`queryAllFromFavorites`]() | `(QueryLimit?)` | `List<FavoritesEntity>` | <br>
-| [`queryFromLastPlayed`]() | `(SongId)` | `LastPlayedEntity` | <br>
-| [`queryAllFromLastPlayed`]() | `(QueryLimit?)` | `List<LastPlayedEntity>` | <br>
-| [`queryFromMostPlayed`]() | `(SongId)` | `MostPlayedEntity` | <br>
-| [`queryAllFromMostPlayed`]() | `(QueryLimit?)` | `List<MostPlayedEntity>` | <br>
-| [`queryFromPlaylist`]() | `(SongId)` | `PlaylistSongsEntity` | <br>
-| [`queryAllFromPlaylist`]() | `(QueryLimit?)` | `List<PlaylistSongsEntity>` | <br>
-
-### Playlist métodos
+### Query methods
 
 |  Methods  |   Parameters   |   Return   |
 |--------------|-----------------|-----------------|
-| [`createPlaylist`]() | `(Entity)` | `int` | <br>
-| [`deletePlaylist`]() | `(Entity)` | `bool` | <br>
-| [`renamePlaylist`]() | `(PlaylistId, NewPlaylistName)` | `bool` | <br>
-| [`queryPlaylist`]() | `(PlaylistId)` | `PlaylistEntity` | <br>
-| [`queryAllPlaylists`]() | `(QueryLimit?)` | `List<PlaylistEntity>` | <br>
+| [`queryFromFavorites`]() | `(EntityKey)` | `FavoritesEntity` | <br>
+| [`queryFavorites`]() | `(Limit?, Reverse?, RoomSortType?)` | `List<FavoritesEntity>` | <br>
+| [`queryFromLastPlayed`]() | `(EntityKey)` | `LastPlayedEntity` | <br>
+| [`queryLastPlayed`]() | `(Limit?, Reverse?, RoomSortType?)` | `List<LastPlayedEntity>` | <br>
+| [`queryFromMostPlayed`]() | `(EntityKey)` | `MostPlayedEntity` | <br>
+| [`queryMostPlayed`]() | `(Limit?, Reverse?, RoomSortType?)` | `List<MostPlayedEntity>` | <br>
+| [`queryFromPlaylist`]() | `(PlaylistKey, EntityKey)` | `SongEntity` | <br>
+| [`queryAllFromPlaylist`]() | `(PlaylistKey, Limit?, Reverse?, RoomSortType?)` | `List<SongEntity>` | <br>
+
+### Playlist methods
+
+|  Methods  |   Parameters   |   Return   |
+|--------------|-----------------|-----------------|
+| [`createPlaylist`]() | `(PlaylistName)` | `int?` | <br>
+| [`deletePlaylist`]() | `(PlaylistKey)` | `bool` | <br>
+| [`renamePlaylist`]() | `(PlaylistKey, NewName)` | `bool` | <br>
+| [`clearPlaylists`]() |  | `bool` | <br>
+| [`queryPlaylist`]() | `(PlaylistKey)` | `PlaylistEntity` | <br>
+| [`queryPlaylists`]() | `(Limit?, Reverse?)` | `List<PlaylistEntity>` | <br>
 
 ## Exemplos:
 
@@ -124,18 +112,18 @@ Todos os tipos de métodos nesse plugin:
   //Se você usa [on_audio_query] apenas precisa extender SongModel para criar qualquer entidade.
   someName() async {
     //O retorno irá sé o id da música dentro do banco de dados.
-    int addToResult = await OnAudioRoom().addTo(
+    int? addToResult = await OnAudioRoom().addTo(
       RoomType.FAVORITES, 
-      entity[index].toFavoritesEntity,
+      entity[index].getMap.toFavoritesEntity(),
     );
   }
 
   //Se não você usa [on_audio_query] apenas crie um map com todas as informações.
   someOtherName() async {
     Map<dynamic, dynamic> favoritesEntity = {
-      "last_data": song.data,
-      "display_name": song.displayName,
-      "id": song.id,
+      "_data": song.data,
+      "_display_name": song.displayName,
+      "_id": song.id,
       "album": song.album,
       "album_id": song.albumId,
       "artist": song.artist,
@@ -148,9 +136,9 @@ Todos os tipos de métodos nesse plugin:
 
     //Agora, adicione para o banco de dados.
     //O retorno irá sé o id da música dentro do banco de dados.
-    int addToResult = await OnAudioRoom().addTo(
+    int? addToResult = await OnAudioRoom().addTo(
       RoomType.FAVORITES, 
-      favoritesEntity,
+      favoritesEntity.toFavoritesEntity(),
     ); 
   }
 ```
@@ -161,11 +149,11 @@ Todos os tipos de métodos nesse plugin:
   someName() async {
     //Crie uma lista com todos os SongModel.
     List<SongModel> listOfSongs;
-    List<Map<dynamic, dynamic>> listOfEntities;
+    List<dynamic> listOfEntities;
     
     //Adicione todas as músicas do model para a entidade.
     listOfSongs.forEach(element) {
-      listOfEntities.add(element.toFavoritesEntity());
+      listOfEntities.add(element.getMap.toFavoritesEntity());
     }
 
     //Agora, adicione para o banco de dados.
@@ -173,12 +161,14 @@ Todos os tipos de métodos nesse plugin:
     List<int> addAllToResult = await OnAudioRoom().addAllTo(
       RoomType.FAVORITES, 
       listOfEntities,
+      //playlistKey,
     );
   }
 
   //Se não você usa [on_audio_query] apenas crie uma lista de map com todas as informações.
   someOtherName() async {
-    List<Map<dynamic, dynamic>> listOfEntities;
+    List<dynamic> listOfEntities;
+
     listOfSongs.forEach(element) {
       Map<dynamic, dynamic> favoritesEntity = {
       "last_data": song.data,
@@ -194,7 +184,7 @@ Todos os tipos de métodos nesse plugin:
       "artwork": song.artwork,
       };
 
-      listOfEntities.add(favoritesEntity);
+      listOfEntities.add(favoritesEntity.toFavoritesEntity());
     }
 
     //Agora, adicione para o banco de dados.
@@ -202,6 +192,7 @@ Todos os tipos de métodos nesse plugin:
     List<int> addAllToResult = await OnAudioRoom().addAllTo(
       RoomType.FAVORITES, 
       favoritesEntity,
+      //playlistKey,
     ); 
   }
 ```
@@ -212,7 +203,8 @@ Todos os tipos de métodos nesse plugin:
     //O retorno será [true] se a música foi deletada ou [false] se não.
     bool deleteFromResult = await OnAudioRoom().deleteFrom(
       RoomType.FAVORITES,
-      SongId,
+      EntityKey,
+      //playlistKey,
     );
   }
 
@@ -221,20 +213,34 @@ Todos os tipos de métodos nesse plugin:
   someName() async {
     //O retorno será [true] se a música foi deletada ou [false] se não.
     bool deleteFromResult = await OnAudioRoom().deleteFrom(
-      RoomType.PLAYLIST_SONGS,
-      SongId,
-      PlaylistId: PlaylistId,
+      RoomType.PLAYLIST,
+      EntityKey,
+      PlaylistKey: PlaylistKey,
     );
   }
 ```
 
 #### deleteAllFrom
 ```dart
-  //Esse é bem simples.
   someName() async {
+    List<int> listOfKeysToDelete = [...];
     //O retorno será [true] se todas as músicas foram deletadas ou [false] se não.
     bool deleteAllFromResult = await OnAudioRoom().deleteAllFrom(
       RoomType.FAVORITES,
+      listOfKeysToDelete,
+      //playlistKey,
+    );
+  }
+```
+
+#### clearRoom
+```dart
+  //Esse é bem simples.
+  someName() async {
+    //O retorno será [true] se todas as músicas foram deletadas ou [false] se não.
+    bool deleteAllFromResult = await OnAudioRoom().clearRoom(
+      RoomType.FAVORITES,
+      //playlistKey,
     );
   }
 ```
@@ -248,7 +254,8 @@ Todos os tipos de métodos nesse plugin:
     //O retorno será [true] se a música já foi adicionada ou [false] se não.
     bool checkInResult = await OnAudioRoom().checkIn(
       RoomType.FAVORITES,
-      SongId,
+      EntityKey,
+      //playlistKey,
     );
   }
 ```
@@ -257,19 +264,24 @@ Todos os tipos de métodos nesse plugin:
 ```dart
   someName() async {
     //Com esse método você irá definir um id e irá receber todas as informações sobre a música.
-    FavoritesEntity queryFromResult = await OnAudioRoom().queryFromFavorites(
-      SongId,
+    FavoritesEntity? queryFromResult = await OnAudioRoom().queryFromFavorites(
+      EntityKey,
     );
   }
 ```
 
-#### queryFromFavorites
+#### queryFavorites
 ```dart
   someName() async {
     //Com esse método você irá pegar todas as músicas e todas as informações baseado no Type[Entity].
+    //
     //Você pode adicionar um valor como parametro para definir quantas músicas irão voltar.
-    List<FavoritesEntity> queryAllFromResult = await OnAudioRoom().queryAllFromFavorites(
+    //Você pode adicionar um [bool] como parametro para definir se a lista vai ser ao contrário ou não.
+    //Você pode adicionar um [RoomSortType] como parametro para definir a ordem da lista.
+    List<FavoritesEntity> queryResult = await OnAudioRoom().queryFavorites(
       100, //Default: 50
+      true, //Default: false
+      RoomSortType.TITLE //Default: null
     );
   }
 ```

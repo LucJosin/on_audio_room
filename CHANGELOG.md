@@ -1,3 +1,40 @@
+## [2.0.0-beta.1] - [07.26.2021]
+### Features
+- Added `[ID]`, `[TITLE]`, `[DURATION]` and `[DATE_ADDED]` to `[RoomSortType]`.
+- Added `[RoomSortType]` to `[query]` methods.
+- Added `[deleteRoomFile]`. **This method will delete the file PERMANENTLY**.
+- Added `[clearRoom]`.
+- Added `[updateRoom]`.
+
+### Fixes
+- Fixed wrong export. - [Fixed #1](https://github.com/LucasPJS/on_audio_room/issues/1)
+
+### Documentation
+- Updated `README` documentation.
+
+### Changes
+- Added a better example using the `[Favorites]` method has example.
+- Added a better documentation to example.
+- Now all `[entity/entities]` will be checked based on `[RoomType]`.
+- Added internal `[RoomController]` to clean the package main method.
+
+### ⚠ Important Changes
+- Now `[deleteAllFrom]` no longer delete all data from specific `[Room]`, use `[clearRoom]` instead.
+- Now `[queryAllFromFavorites]` are `[queryFavorites]`.
+- Now `[queryAllFromLastPlayed]` are `[queryLastPlayed]`.
+- Now `[queryAllFromMostPlayed]` are `[queryMostPlayed]`.
+- Now `[resetAllDatabase]` are `[clearAll]`.
+
+#### @**Deprecated**
+- `[setDatabaseName]` - 
+- `[setDatabaseLimit]` - 
+- `[getDatabaseName]` - 
+- `[getDatabaseStatus]`
+    - Use `[getRoomInfo]` instead.
+- `[resetDatabaseName]` - 
+- `[resetDatabaseLimit]` - 
+- `[queryAllIdsFrom]` - 
+
 ## [2.0.0-beta.0] - [07.26.2021]
 ### Documentation
 - Updated `README` documentation.
@@ -199,6 +236,7 @@
 - TODO
 
 ### ⚠ Important Changes
+#### @**Deprecated**
 - TODO
  -->
 

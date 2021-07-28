@@ -1,8 +1,19 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:on_audio_room/on_audio_room.dart';
 
-///
+/// A [on_audio_room] extension to help the package.
 extension OnRoom on RoomType {
+  /// Used to init all the adapters, and open the necessary room.
+  ///
+  /// Important:
+  ///
+  /// * Avoid opening multiple room's at the same time.
+  ///
+  /// Return:
+  ///
+  /// * [openRoom] will **ALWAYS** return a [bool]:
+  ///   * [true] if the room/path is opened
+  ///   * [false] if something wrong happend.
   Future<bool> get openRoom async {
     //
     Hive.registerAdapter(FavoritesEntityAdapter());
@@ -45,6 +56,7 @@ extension OnRoom on RoomType {
     }
   }
 
+  /// Used to get all the box/room information from a specific [RoomType].
   Box<dynamic> get getBox {
     switch (this) {
       case RoomType.FAVORITES:
