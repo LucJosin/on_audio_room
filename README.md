@@ -33,7 +33,7 @@ Add the following code to your `pubspec.yaml`:
 dependencies:
   on_audio_room: ^1.0.1+1
   # Or you can test the beta version
-  # on_audio_room: 2.0.0-beta.1
+  # on_audio_room: 2.0.0-beta.2
 ```
 
 ## Some Features:

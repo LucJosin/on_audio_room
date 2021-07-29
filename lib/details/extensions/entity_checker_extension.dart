@@ -15,13 +15,12 @@ extension OnEntityChecker on dynamic {
       case RoomType.MOST_PLAYED:
         return this is MostPlayedEntity;
       case RoomType.PLAYLIST:
-        return this is PlaylistEntity;
+        if (this is SongEntity || this is PlaylistEntity) {
+          return true;
+        }
+        return false;
       default:
-        return this is SongEntity
-            ? true
-            : throw Exception(
-                "[isEntity] - [entity] isn't a instance of Entity\n"
-                "Choose one of the existing entities");
+        return false;
     }
   }
 }

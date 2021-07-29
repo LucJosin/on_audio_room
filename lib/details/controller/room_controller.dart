@@ -2,6 +2,23 @@ part of on_audio_room;
 
 /// Used to control most of the methods and at the same time clean the main method.
 class _RoomController {
+  /// This method will open all room's at the same time.
+  Future<bool> get openAll async {
+    // Register a [TypeAdapter] to announce it to Hive.
+    Hive.registerAdapter(FavoritesEntityAdapter());
+    Hive.registerAdapter(LastPlayedEntityAdapter());
+    Hive.registerAdapter(MostPlayedEntityAdapter());
+    Hive.registerAdapter(PlaylistEntityAdapter());
+    Hive.registerAdapter(SongEntityAdapter());
+
+    // Open all boxes
+    await Hive.openBox<FavoritesEntity>("on_favorites_room");
+    await Hive.openBox<LastPlayedEntity>("on_last_played_room");
+    await Hive.openBox<MostPlayedEntity>("on_most_played_room");
+    await Hive.openBox<PlaylistEntity>("on_playlists_room");
+    return true;
+  }
+
   /// Used to reset **ALL** the database.
   Future<bool> clearAllController() async {
     try {

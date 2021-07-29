@@ -136,7 +136,14 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "2.0.0-beta.1"
+    version: "2.0.0-beta.2"
+  on_toast_widget:
+    dependency: "direct main"
+    description:
+      name: on_toast_widget
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   path:
     dependency: transitive
     description:

@@ -12,6 +12,8 @@ Copyright: © 2021, Lucas Josino. All rights reserved.
 =============
 */
 
+part of on_audio_room;
+
 /// Interface and Main method for use [on_audio_room].
 ///
 /// [on_audio_room] is a [Flutter](https://flutter.dev/) Package used to create a
@@ -28,13 +30,12 @@ Copyright: © 2021, Lucas Josino. All rights reserved.
 /// See more:
 ///
 /// Homepage: [GitHub](https://github.com/LucasPJS/on_audio_room) <br>
-/// Documentation: [API](https://pub.dev/documentation/on_audio_room/latest/) <br>
+///
+/// Documentation: [API](https://pub.dev/documentation/on_audio_room/latest/)
 ///
 /// Any problem? [Issues](https://github.com/LucasPJS/on_audio_room/issues) <br>
+///
 /// Any suggestion? [Pull request](https://github.com/LucasPJS/on_audio_room/pulls)
-part of on_audio_room;
-
-/// A Calculator.
 class OnAudioRoom {
   /// Internal Controller to keep the package clean and organized.
   _RoomController get _controller => _RoomController();
@@ -47,8 +48,7 @@ class OnAudioRoom {
   ///
   /// * Call [initRoom] before [runApp] or [navigate] to another screen that **REQUIRE**
   /// call any room.
-  /// * If you don't define [roomType], only the room's path will be loaded, but
-  /// you **CAN'T** call any method
+  /// * If you don't define [roomType], **ALL** the room's will be loaded.
   ///
   /// Parameters:
   ///
@@ -59,8 +59,6 @@ class OnAudioRoom {
   ///
   /// * This method will **ONLY** work 100% if you add a [async/await], if don't,
   /// the widget will load almost in the same time and will throw a error.
-  /// * You **CAN** open all the room's at the same time, **BUT**, this will
-  /// require a lof of memory. I **DON'T** recommend.
   /// * **REMEMBER TO CLOSE THE ROOM'S BEFORE [DISPOSE]**.
   ///
   /// Example:
@@ -84,7 +82,9 @@ class OnAudioRoom {
   /// * [closeRoom]
   Future<bool> initRoom([RoomType? roomType, String? subDir]) async {
     await Hive.initFlutter(subDir);
-    return roomType == null ? true : await roomType.openRoom;
+    return roomType == null
+        ? await _controller.openAll
+        : await roomType.openRoom;
   }
 
   /// Used to close room's

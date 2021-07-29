@@ -6,7 +6,7 @@ class _PlaylistDao {
 
   //Playlist methods
 
-  ///
+  /// [createPlaylist]
   Future<int?> createPlaylist(PlaylistEntity entity) async {
     try {
       entity
@@ -20,7 +20,7 @@ class _PlaylistDao {
     return null;
   }
 
-  ///
+  /// [deletePlaylist]
   Future<bool> deletePlaylist(int key) async {
     if (initPlaylistDb.containsKey(key)) {
       try {
@@ -32,7 +32,7 @@ class _PlaylistDao {
     return false;
   }
 
-  ///
+  /// [renamePlaylist]
   Future<bool> renamePlaylist(int key, String newName) async {
     if (initPlaylistDb.containsKey(key)) {
       try {
@@ -47,6 +47,7 @@ class _PlaylistDao {
     return false;
   }
 
+  /// [clearPlaylists]
   Future<bool> clearPlaylists() async {
     try {
       await initPlaylistDb.clear();
@@ -57,7 +58,7 @@ class _PlaylistDao {
     return false;
   }
 
-  ///
+  /// [updatePlaylist]
   Future<bool> updatePlaylist(PlaylistEntity entity) async {
     if (initPlaylistDb.containsKey(entity.key)) {
       try {
@@ -71,11 +72,12 @@ class _PlaylistDao {
     return false;
   }
 
+  /// [queryPlaylist]
   PlaylistEntity? queryPlaylist(int key) {
     return initPlaylistDb.get(key);
   }
 
-  ///
+  /// [queryPlaylists]
   List<PlaylistEntity> queryPlaylists(int limit, bool reverse) {
     List<PlaylistEntity> tempPlaylistList = [];
 
@@ -90,7 +92,7 @@ class _PlaylistDao {
 
   //Playlist songs methods
 
-  ///
+  /// [addToPlaylist]
   Future<int?> addToPlaylist(int playlistKey, SongEntity entity) async {
     if (initPlaylistDb.containsKey(playlistKey)) {
       try {
@@ -98,6 +100,7 @@ class _PlaylistDao {
         tempEntity
           ..playlistDateModified = DateTime.now().millisecondsSinceEpoch;
         tempEntity.playlistSongs.add(entity);
+        updatePlaylist(tempEntity);
         return entity.id;
       } catch (e) {
         print("[on_audio_error]" + e.toString());
@@ -106,6 +109,7 @@ class _PlaylistDao {
     return null;
   }
 
+  /// [addAllPlaylist]
   Future<List<int>> addAllPlaylist(
     int playlistKey,
     List<SongEntity> entities,
@@ -122,6 +126,7 @@ class _PlaylistDao {
     return ids;
   }
 
+  /// [updateSongFromPlaylist]
   Future<bool> updateSongFromPlaylist(
     int playlistKey,
     SongEntity entity,
@@ -143,6 +148,7 @@ class _PlaylistDao {
     return false;
   }
 
+  /// [deleteFromPlaylist]
   Future<bool> deleteFromPlaylist(int playlistKey, int id) async {
     if (initPlaylistDb.containsKey(playlistKey)) {
       try {
@@ -158,6 +164,7 @@ class _PlaylistDao {
     return false;
   }
 
+  /// [deleteAllFromPlaylist]
   Future<bool> deleteAllFromPlaylist(int playlistKey, List<int> ids) async {
     try {
       for (var id = 0; id < ids.length; id++) {
@@ -170,6 +177,7 @@ class _PlaylistDao {
     return false;
   }
 
+  /// [clearPlaylist]
   Future<bool> clearPlaylist(int playlistKey) async {
     try {
       var tempEntity = initPlaylistDb.get(playlistKey)!;
@@ -182,6 +190,7 @@ class _PlaylistDao {
     return false;
   }
 
+  /// [checkInPlaylist]
   bool checkInPlaylist(int playlistKey, int id) {
     if (initPlaylistDb.containsKey(playlistKey)) {
       try {
@@ -195,6 +204,7 @@ class _PlaylistDao {
     return false;
   }
 
+  /// [queryFromPlaylist]
   SongEntity? queryFromPlaylist(
     int playlistKey,
     int id,
@@ -203,6 +213,7 @@ class _PlaylistDao {
     return tempEntity.firstWhere((element) => element.id == id);
   }
 
+  /// [queryAllFromPlaylist]
   Future<List<SongEntity>> queryAllFromPlaylist(
     int playlistKey,
     int limit,

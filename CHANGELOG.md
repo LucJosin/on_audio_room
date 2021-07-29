@@ -1,3 +1,17 @@
+## [2.0.0-beta.2] - [07.28.2021]
+### Features
+- Added a option to load all room's using `[initRoom]`.
+
+### Fixes
+- Fixed playlists not saving the songs.
+
+### Documentation
+- Updated `README` documentation.
+
+### Changes
+- Removed `[path_provider]` from `[pubspec.yaml]`.
+- **[Test]** Removed `[Flutter]` from `[pubspec.yaml]`.
+
 ## [2.0.0-beta.1] - [07.26.2021]
 ### Features
 - Added `[ID]`, `[TITLE]`, `[DURATION]` and `[DATE_ADDED]` to `[RoomSortType]`.
