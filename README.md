@@ -48,6 +48,30 @@ dependencies:
 
 ## How to use:
 
+Before calling any method you need `init` the room/room's:
+
+```dart
+void main() async {
+  //Init only one room.
+  await OnAudioRoom().initRoom(RoomType.FAVORITES); //Add the RoomType. 
+  runApp(MaterialApp(home: MyApp()));
+}
+
+//Or
+
+void main() async {
+  //Init all the room's.
+  await OnAudioRoom().initRoom(); //Don't add the RoomType.
+  runApp(MaterialApp(home: MyApp()));
+}
+```
+
+**Important:**
+
+  * **This method will ONLY work 100% if you add a async/await, if don't, the widget will load almost in the same time and will throw a error.**
+  * **REMEMBER TO CLOSE THE ROOM'S INSIDE THE DISPOSE.**
+  * **See the [documentation](https://pub.dev/documentation/on_audio_room/latest/on_audio_room/OnAudioRoom/initRoom.html)**
+
 ```dart
 OnAudioRoom() // The main method to start using the plugin.
 ```

@@ -59,7 +59,7 @@ class OnAudioRoom {
   ///
   /// * This method will **ONLY** work 100% if you add a [async/await], if don't,
   /// the widget will load almost in the same time and will throw a error.
-  /// * **REMEMBER TO CLOSE THE ROOM'S BEFORE [DISPOSE]**.
+  /// * **REMEMBER TO CLOSE THE ROOM'S INSIDE THE DISPOSE.**.
   ///
   /// Example:
   ///

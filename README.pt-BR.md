@@ -48,6 +48,30 @@ dependencies:
 
 ## Como usar:
 
+Antes de chamar algum método você precisa `iniciar` o/os "quarto"/"quartos":
+
+```dart
+void main() async {
+  //Inicia apenas um "quarto".
+  await OnAudioRoom().initRoom(RoomType.FAVORITES); //Coloque qual "quarto". 
+  runApp(MaterialApp(home: MyApp()));
+}
+
+//Or
+
+void main() async {
+  //Inicia todos os "quartos".
+  await OnAudioRoom().initRoom(); //Não coloque o "quarto".
+  runApp(MaterialApp(home: MyApp()));
+}
+```
+
+**Importante:**
+
+  * **Esse método apenas FUNCIONARÁ 100% se você adicionar um "async/await", se não, a pagina vai carregar quase no mesmo tempo e vai causar um erro.**
+  * **LEMBRE-SE DE FECHAR OS "QUARTOS" NO "DISPOSE".**
+  * **Veja a [documentação](https://pub.dev/documentation/on_audio_room/latest/on_audio_room/OnAudioRoom/initRoom.html)**
+
 ```dart
 OnAudioRoom() // O comando principal para usar o plugin.
 ```
