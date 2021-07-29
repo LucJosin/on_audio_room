@@ -1,3 +1,8 @@
+## [2.0.0] - [07.29.2021]
+### Release
+
+- `[2.0.0]` release.
+
 ## [2.0.0-beta.2] - [07.28.2021]
 ### Features
 - Added a option to load all room's using `[initRoom]`.
@@ -10,7 +15,7 @@
 
 ### Changes
 - Removed `[path_provider]` from `[pubspec.yaml]`.
-- **[Test]** Removed `[Flutter]` from `[pubspec.yaml]`.
+- ~~**[Test]** Removed `[Flutter]` from `[pubspec.yaml]`.~~
 
 ## [2.0.0-beta.1] - [07.26.2021]
 ### Features

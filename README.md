@@ -1,6 +1,5 @@
 # on_audio_room
 [![Pub.dev](https://img.shields.io/pub/v/on_audio_room?color=9cf&label=Pub.dev&style=flat-square)](https://pub.dev/packages/on_audio_room)
-[![Pub.dev](https://img.shields.io/pub/v/on_audio_room?color=9cf&include_prereleases&label=Pub.dev&style=flat-square)](https://pub.dev/packages/on_audio_room/versions/2.0.0-beta.0)
 [![Platforms](https://img.shields.io/badge/Platforms-Android%20%7C%20IOS%20%7C%20Web%20%7C%20MacOs%20%7C%20Linux%20%7C%20Windows-9cf?&style=flat-square)](https://www.android.com/)
 [![Flutter](https://img.shields.io/badge/Language-Flutter%20%7C%20Null--Safety-9cf?logo=flutter&style=flat-square)](https://www.flutter.dev/)
 
@@ -31,9 +30,7 @@ NOTE: Feel free to help with readme translations
 Add the following code to your `pubspec.yaml`:
 ```yaml
 dependencies:
-  on_audio_room: ^1.0.1+1
-  # Or you can test the beta version
-  # on_audio_room: 2.0.0-beta.2
+  on_audio_room: ^2.0.0
 ```
 
 ## Some Features:
