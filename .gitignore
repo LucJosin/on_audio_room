@@ -2,7 +2,6 @@
 *.class
 *.log
 *.pyc
-*.lock
 *.swp
 .DS_Store
 .atom/
@@ -26,7 +25,6 @@
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
-.metadata
 .packages
 .pub-cache/
 .pub/
