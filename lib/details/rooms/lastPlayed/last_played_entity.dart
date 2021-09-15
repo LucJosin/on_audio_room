@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:hive/hive.dart';
 import 'package:on_audio_room/details/rooms/song_entity.dart';
 
@@ -37,7 +39,7 @@ class LastPlayedEntity extends SongEntity {
         "artist_id: ${this.artistId}, " +
         "date_added: ${this.dateAdded}, " +
         "duration: ${this.duration}, " +
-        "artwork: ${this.artwork}, " +
+        "artwork (Length): ${this.artworkAsBytes?.length}, " +
         "time_played: ${this.timePlayed}, " +
         "last_time_played: ${this.lastTimePlayed}";
   }

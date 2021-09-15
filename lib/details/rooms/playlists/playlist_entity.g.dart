@@ -20,15 +20,15 @@ class PlaylistEntityAdapter extends TypeAdapter<PlaylistEntity> {
       fields[0] as int,
       fields[1] as String,
       fields[2] as int,
-      fields[3] as int?,
+      fields[5] as int?,
       (fields[4] as List).cast<SongEntity>(),
-    );
+    )..playlistDataAdded = fields[3] as int?;
   }
 
   @override
   void write(BinaryWriter writer, PlaylistEntity obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.key)
       ..writeByte(1)
@@ -38,7 +38,9 @@ class PlaylistEntityAdapter extends TypeAdapter<PlaylistEntity> {
       ..writeByte(3)
       ..write(obj.playlistDataAdded)
       ..writeByte(4)
-      ..write(obj.playlistSongs);
+      ..write(obj.playlistSongs)
+      ..writeByte(5)
+      ..write(obj.playlistDateAdded);
   }
 
   @override

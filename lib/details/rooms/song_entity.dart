@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:hive/hive.dart';
 
 part 'song_entity.g.dart';
@@ -57,7 +59,12 @@ class SongEntity {
   @HiveField(9)
   late String title;
 
-  /// [artwork]
+  /// Deprecated after [2.1.0].
   @HiveField(10)
+  @Deprecated("Use [artworkAsBytes] instead")
   String? artwork;
+
+  /// [artworkBytes]
+  @HiveField(15)
+  Uint8List? artworkAsBytes;
 }

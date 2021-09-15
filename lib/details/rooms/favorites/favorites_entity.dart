@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:hive/hive.dart';
 import 'package:on_audio_room/details/rooms/song_entity.dart';
 
@@ -26,6 +28,6 @@ class FavoritesEntity extends SongEntity {
         "date_added: ${this.dateAdded}, " +
         "duration: ${this.duration}, " +
         "title: ${this.title}, " +
-        "artwork: ${this.artwork}";
+        "artwork (Length): ${this.artworkAsBytes?.length}";
   }
 }

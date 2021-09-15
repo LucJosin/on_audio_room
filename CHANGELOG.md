@@ -1,3 +1,15 @@
+## [2.1.0] - [09.15.2021]
+### Features
+- **[Added]** `getMap` to `[SongEntity]` as `extension`, this will help to convert `[SongEntity]` to `[SongModel]`. - [#3](https://github.com/LucasPJS/on_audio_room/issues/3)
+
+### Fixes
+- **[Fixed]** Entity checker error when using `[addAllTo]`. - [#5](https://github.com/LucasPJS/on_audio_room/issues/5)
+- **[Fixed]** No value returning when using `[queryLastPlayed]`. - [#4](https://github.com/LucasPJS/on_audio_room/issues/4)
+
+### Documentation
+- Updated `README` documentation.
+- Updated `OnAudioRoomExample` documentation to support new `[Flutter 2.5]`.
+
 ## [2.0.0] - [07.29.2021]
 ### Release
 
@@ -260,7 +272,8 @@
  -->
 
 <!-- 
- - [Added #Issue](Link)
- - [Fixed #Issue](Link)
- - [Changed #Issue](Link)
+ https://github.com/LucasPJS/on_audio_room/issues/
+ - **[Added]** (Text)- [#Issue](Link)
+ - **[Fixed]** (Text)- [#Issue](Link)
+ - **[Changed]** (Text)- [#Issue](Link)
 -->

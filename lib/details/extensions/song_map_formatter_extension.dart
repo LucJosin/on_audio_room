@@ -35,7 +35,7 @@ extension OnEntityFormatter on Map {
       ..dateAdded = this["date_added"]
       ..duration = this["duration"]
       ..title = this["title"]
-      ..artwork = this["artwork"];
+      ..artworkAsBytes = this["artwork"];
   }
 
   /// Used to parse a [Map] into a [FavoritesEntity].
@@ -68,7 +68,7 @@ extension OnEntityFormatter on Map {
       ..dateAdded = this["date_added"]
       ..duration = this["duration"]
       ..title = this["title"]
-      ..artwork = this["artwork"];
+      ..artworkAsBytes = this["artwork"];
   }
 
   /// Used to parse a [Map] into a [LastPlayedEntity].
@@ -104,7 +104,7 @@ extension OnEntityFormatter on Map {
       ..dateAdded = this["date_added"]
       ..duration = this["duration"]
       ..title = this["title"]
-      ..artwork = this["artwork"];
+      ..artworkAsBytes = this["artwork"];
   }
 
   /// Used to parse a [Map] into a [MostPlayedEntity].
@@ -147,6 +147,6 @@ extension OnEntityFormatter on Map {
       ..dateAdded = this["date_added"]
       ..duration = this["duration"]
       ..title = this["title"]
-      ..artwork = this["artwork"];
+      ..artworkAsBytes = this["artwork"];
   }
 }

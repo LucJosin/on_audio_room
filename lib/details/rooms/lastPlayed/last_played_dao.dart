@@ -102,7 +102,7 @@ class _LastPlayedDao {
 
     if (initLastPlayedDb.isEmpty) return tempLastPlayedList;
 
-    for (var i = 0; i < limit; i++) {
+    for (var i = 0; i < initLastPlayedDb.length; i++) {
       if (i == limit) break;
       tempLastPlayedList.add(initLastPlayedDb.getAt(i) as LastPlayedEntity);
     }

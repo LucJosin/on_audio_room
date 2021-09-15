@@ -10,7 +10,7 @@ class PlaylistEntity {
     this.key,
     this.playlistName,
     this.playlistDateModified,
-    this.playlistDataAdded,
+    this.playlistDateAdded,
     this.playlistSongs,
   );
 
@@ -28,6 +28,7 @@ class PlaylistEntity {
 
   /// [playlistDataAdded]
   @HiveField(3)
+  @Deprecated("Use [playlistDateAdded] instead")
   int? playlistDataAdded;
 
   /// A list of [SongEntity] inside a specific [playlist].
@@ -37,4 +38,18 @@ class PlaylistEntity {
   /// * This list will be empty when created.
   @HiveField(4)
   List<SongEntity> playlistSongs = [];
+
+  /// [playlistDateAdded]
+  @HiveField(5)
+  int? playlistDateAdded;
+
+  @override
+  String toString() {
+    return "(${this.runtimeType}): " +
+        "key: ${this.key}, " +
+        "playlist_name: ${this.playlistName}, " +
+        "playlist_date_modified: ${this.playlistDateModified}, " +
+        "playlist_date_added: ${this.playlistDateAdded}, " +
+        "playlist_songs (Length): ${this.playlistSongs.length}";
+  }
 }

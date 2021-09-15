@@ -32,13 +32,14 @@ class MostPlayedEntityAdapter extends TypeAdapter<MostPlayedEntity> {
       ..dateAdded = fields[7] as int?
       ..duration = fields[8] as int?
       ..title = fields[9] as String
-      ..artwork = fields[10] as String?;
+      ..artwork = fields[10] as String?
+      ..artworkAsBytes = fields[15] as Uint8List?;
   }
 
   @override
   void write(BinaryWriter writer, MostPlayedEntity obj) {
     writer
-      ..writeByte(15)
+      ..writeByte(16)
       ..writeByte(11)
       ..write(obj.key)
       ..writeByte(12)
@@ -68,7 +69,9 @@ class MostPlayedEntityAdapter extends TypeAdapter<MostPlayedEntity> {
       ..writeByte(9)
       ..write(obj.title)
       ..writeByte(10)
-      ..write(obj.artwork);
+      ..write(obj.artwork)
+      ..writeByte(15)
+      ..write(obj.artworkAsBytes);
   }
 
   @override

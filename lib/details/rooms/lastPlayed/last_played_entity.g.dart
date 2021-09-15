@@ -31,13 +31,14 @@ class LastPlayedEntityAdapter extends TypeAdapter<LastPlayedEntity> {
       ..dateAdded = fields[7] as int?
       ..duration = fields[8] as int?
       ..title = fields[9] as String
-      ..artwork = fields[10] as String?;
+      ..artwork = fields[10] as String?
+      ..artworkAsBytes = fields[15] as Uint8List?;
   }
 
   @override
   void write(BinaryWriter writer, LastPlayedEntity obj) {
     writer
-      ..writeByte(14)
+      ..writeByte(15)
       ..writeByte(11)
       ..write(obj.key)
       ..writeByte(12)
@@ -65,7 +66,9 @@ class LastPlayedEntityAdapter extends TypeAdapter<LastPlayedEntity> {
       ..writeByte(9)
       ..write(obj.title)
       ..writeByte(10)
-      ..write(obj.artwork);
+      ..write(obj.artwork)
+      ..writeByte(15)
+      ..write(obj.artworkAsBytes);
   }
 
   @override

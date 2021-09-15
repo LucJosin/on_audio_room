@@ -42,6 +42,7 @@ import 'package:on_audio_room/details/extensions/room_helper_extension.dart';
 
 //Extensions export
 export 'package:on_audio_room/details/extensions/song_map_formatter_extension.dart';
+export 'package:on_audio_room/details/extensions/room_helper_extension.dart';
 
 //Controller
 part 'details/on_audio_room_controller.dart';
