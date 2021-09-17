@@ -7,7 +7,17 @@ class _FavoritesDao {
       Hive.box<FavoritesEntity>("on_favorites_room");
 
   /// addToFavorites
-  Future<int?> addToFavorites(FavoritesEntity entity) async {
+  Future<int?> addToFavorites(
+    FavoritesEntity entity,
+    bool ignoreDuplicate,
+  ) async {
+    // This will check if already exist a song with the same id.
+    if (!ignoreDuplicate) {
+      for (var i = 0; i < initFavoritesDb.length; i++) {
+        if (initFavoritesDb.get(i)?.id == entity.id) return 0;
+      }
+    }
+    //
     try {
       await initFavoritesDb.put(entity.key, entity);
       return entity.key;

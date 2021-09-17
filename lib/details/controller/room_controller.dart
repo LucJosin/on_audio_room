@@ -38,24 +38,29 @@ class _RoomController {
     RoomType roomType,
     dynamic entity, {
     int? playlistKey,
+    bool ignoreDuplicate = true,
   }) async {
     switch (roomType) {
       case RoomType.FAVORITES:
         return await _FavoritesDao().addToFavorites(
           entity as FavoritesEntity,
+          ignoreDuplicate,
         );
       case RoomType.LAST_PLAYED:
         return await _LastPlayedDao().addToLastPlayed(
           entity as LastPlayedEntity,
+          ignoreDuplicate,
         );
       case RoomType.MOST_PLAYED:
         return await _MostPlayedDao().addToMostPlayed(
           entity as MostPlayedEntity,
+          ignoreDuplicate,
         );
       case RoomType.PLAYLIST:
         return await _PlaylistDao().addToPlaylist(
           playlistKey!,
           entity as SongEntity,
+          ignoreDuplicate,
         );
       default:
         throw Exception("[addTo] - [roomType] doesn't return a real Room\n"

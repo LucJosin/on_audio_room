@@ -7,7 +7,17 @@ class _LastPlayedDao {
       Hive.box<LastPlayedEntity>("on_last_played_room");
 
   /// addToLastPlayed
-  Future<int?> addToLastPlayed(LastPlayedEntity entity) async {
+  Future<int?> addToLastPlayed(
+    LastPlayedEntity entity,
+    bool ignoreDuplicate,
+  ) async {
+    // This will check if already exist a song with the same id.
+    if (!ignoreDuplicate) {
+      for (var i = 0; i < initLastPlayedDb.length; i++) {
+        if (initLastPlayedDb.get(i)?.id == entity.id) return 0;
+      }
+    }
+    //
     try {
       await initLastPlayedDb.put(entity.key, entity);
       return entity.key;

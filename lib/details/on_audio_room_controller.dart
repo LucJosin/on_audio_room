@@ -169,14 +169,14 @@ class OnAudioRoom {
   ///
   /// * [roomType] this will define which room the entity will be added.
   /// * [entity] this is the entity with all information about song.
+  /// * [ignoreDuplicate] this will ignore(or no) the song with the same [id].
   /// * [playlistKey] this will be the id/key of the playlist [*].
   ///
   /// **[*] [playlistKey] it's only required when using [RoomType.PLAYLIST].**
   ///
   /// Important:
   ///
-  /// * For now if you add two entities with the same information, will be added.
-  /// You can use [checkIn] to make sure that the song was already added.
+  /// * **If the return is equal to [0], this song was already added.**
   ///
   /// Usage:
   ///
@@ -238,6 +238,7 @@ class OnAudioRoom {
     RoomType roomType,
     dynamic entity, {
     int? playlistKey,
+    bool ignoreDuplicate = true,
   }) async {
     assert(
       OnEntityChecker(entity).isEntity(roomType),
@@ -253,6 +254,7 @@ class OnAudioRoom {
       roomType,
       entity,
       playlistKey: playlistKey,
+      ignoreDuplicate: ignoreDuplicate,
     );
   }
 
@@ -824,10 +826,12 @@ class OnAudioRoom {
   /// Parameters:
   ///
   /// * [playlistName] this is the name of the playlist.
+  /// * [ignoreDuplicate] this will ignore(or no) any playlist with the same [name].
   ///
   /// Important:
   ///
   /// * When creating a playlist, the unique parameter you need to set is [playlistName].
+  /// * **If the return is equal to [0], this playlist already exist.**
   /// * The [key] will be automatically setted.
   /// * The [playlistDateModified] will be automatically setted.
   /// * The [playlistDataAdded] will be automatically setted.
@@ -849,9 +853,13 @@ class OnAudioRoom {
   /// * [addAllTo]
   /// * [deleteFrom]
   /// * [deleteAllFrom]
-  Future<int?> createPlaylist(String playlistName) async {
+  Future<int?> createPlaylist(
+    String playlistName, {
+    bool ignoreDuplicate = false,
+  }) async {
     return await _PlaylistDao().createPlaylist(
       OnPlaylistFormatter(playlistName).toPlaylistEntity,
+      ignoreDuplicate,
     );
   }
 

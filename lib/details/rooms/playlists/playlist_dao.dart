@@ -7,10 +7,22 @@ class _PlaylistDao {
   //Playlist methods
 
   /// [createPlaylist]
-  Future<int?> createPlaylist(PlaylistEntity entity) async {
+  Future<int?> createPlaylist(
+    PlaylistEntity entity,
+    bool ignoreDuplicate,
+  ) async {
+    // This will check if already exist a playlist with the same name.
+    if (!ignoreDuplicate) {
+      for (var i = 0; i < initPlaylistDb.length; i++) {
+        var tmpEntity = initPlaylistDb.values.toList();
+        if (tmpEntity[0].playlistName == entity.playlistName) return 0;
+      }
+    }
+
+    //
     try {
       entity
-        ..playlistDataAdded = DateTime.now().millisecondsSinceEpoch
+        ..playlistDateAdded = DateTime.now().millisecondsSinceEpoch
         ..playlistDateModified = DateTime.now().millisecondsSinceEpoch;
       await initPlaylistDb.put(entity.key, entity);
       return entity.key;
@@ -93,14 +105,25 @@ class _PlaylistDao {
   //Playlist songs methods
 
   /// [addToPlaylist]
-  Future<int?> addToPlaylist(int playlistKey, SongEntity entity) async {
+  Future<int?> addToPlaylist(
+    int playlistKey,
+    SongEntity entity,
+    bool ignoreDuplicate,
+  ) async {
+    // This will check if already exist a song with the same id.
+    if (!ignoreDuplicate) {
+      var songsInPlaylist = initPlaylistDb.get(playlistKey)!.playlistSongs;
+      for (var song in songsInPlaylist) {
+        if (song.id == entity.id) return 0;
+      }
+    }
+    //
     if (initPlaylistDb.containsKey(playlistKey)) {
       try {
-        var tempEntity = initPlaylistDb.get(playlistKey)!;
-        tempEntity
-          ..playlistDateModified = DateTime.now().millisecondsSinceEpoch;
-        tempEntity.playlistSongs.add(entity);
-        updatePlaylist(tempEntity);
+        PlaylistEntity tmpEntity = initPlaylistDb.get(playlistKey)!;
+        tmpEntity..playlistDateModified = DateTime.now().millisecondsSinceEpoch;
+        tmpEntity.playlistSongs.add(entity);
+        await updatePlaylist(tmpEntity);
         return entity.id;
       } catch (e) {
         print("[on_audio_error]" + e.toString());
@@ -116,10 +139,11 @@ class _PlaylistDao {
   ) async {
     List<int> ids = [];
     try {
-      var tempEntity = initPlaylistDb.get(playlistKey)!;
-      tempEntity..playlistDateModified = DateTime.now().millisecondsSinceEpoch;
-      tempEntity.playlistSongs.addAll(entities);
+      PlaylistEntity tmpEntity = initPlaylistDb.get(playlistKey)!;
+      tmpEntity..playlistDateModified = DateTime.now().millisecondsSinceEpoch;
+      tmpEntity.playlistSongs.addAll(entities);
       ids.addAll(entities.getAllIds);
+      await updatePlaylist(tmpEntity);
     } catch (e) {
       print("[on_audio_error]" + e.toString());
     }
@@ -133,14 +157,14 @@ class _PlaylistDao {
   ) async {
     if (initPlaylistDb.containsKey(playlistKey)) {
       try {
-        //TODO Check if works
-        var tempEntity = initPlaylistDb.get(playlistKey);
-        var tempSongEntity = tempEntity!.playlistSongs
-            .firstWhere((element) => element.id == entity.id);
-        print("Playlist before: " + tempSongEntity.toString());
-        tempSongEntity = entity;
-        print("Playlist after: " + tempSongEntity.toString());
-        return updatePlaylist(tempEntity);
+        PlaylistEntity tmpPEntity = initPlaylistDb.get(playlistKey)!;
+        int tmpSIndex = tmpPEntity.playlistSongs.indexWhere(
+          (currentEntity) => currentEntity.id == entity.id,
+        );
+
+        // Replace the specific entity.
+        tmpPEntity.playlistSongs[tmpSIndex] = entity;
+        return await updatePlaylist(tmpPEntity);
       } catch (e) {
         print("[on_audio_error]" + e.toString());
       }
@@ -152,11 +176,10 @@ class _PlaylistDao {
   Future<bool> deleteFromPlaylist(int playlistKey, int id) async {
     if (initPlaylistDb.containsKey(playlistKey)) {
       try {
-        var tempEntity = initPlaylistDb.get(playlistKey)!;
-        tempEntity
-          ..playlistDateModified = DateTime.now().millisecondsSinceEpoch;
-        tempEntity.playlistSongs.removeWhere((element) => element.id == id);
-        return true;
+        PlaylistEntity tmpEntity = initPlaylistDb.get(playlistKey)!;
+        tmpEntity..playlistDateModified = DateTime.now().millisecondsSinceEpoch;
+        tmpEntity.playlistSongs.removeWhere((element) => element.id == id);
+        return await updatePlaylist(tmpEntity);
       } catch (e) {
         print("[on_audio_error]" + e.toString());
       }
@@ -167,7 +190,7 @@ class _PlaylistDao {
   /// [deleteAllFromPlaylist]
   Future<bool> deleteAllFromPlaylist(int playlistKey, List<int> ids) async {
     try {
-      for (var id = 0; id < ids.length; id++) {
+      for (int id = 0; id < ids.length; id++) {
         await deleteFromPlaylist(playlistKey, id);
       }
       return true;
@@ -180,10 +203,10 @@ class _PlaylistDao {
   /// [clearPlaylist]
   Future<bool> clearPlaylist(int playlistKey) async {
     try {
-      var tempEntity = initPlaylistDb.get(playlistKey)!;
-      tempEntity..playlistDateModified = DateTime.now().millisecondsSinceEpoch;
-      tempEntity.playlistSongs.clear();
-      return true;
+      PlaylistEntity tmpEntity = initPlaylistDb.get(playlistKey)!;
+      tmpEntity..playlistDateModified = DateTime.now().millisecondsSinceEpoch;
+      tmpEntity.playlistSongs.clear();
+      return await updatePlaylist(tmpEntity);
     } catch (e) {
       print("[on_audio_error]" + e.toString());
     }
@@ -194,9 +217,10 @@ class _PlaylistDao {
   bool checkInPlaylist(int playlistKey, int id) {
     if (initPlaylistDb.containsKey(playlistKey)) {
       try {
-        //TODO: Check if works
-        var tempEntity = initPlaylistDb.get(playlistKey)!.playlistSongs;
-        return tempEntity.contains(id);
+        var tmpEntity = initPlaylistDb.get(playlistKey)!.playlistSongs;
+        for (var entity in tmpEntity) {
+          if (entity.id == id) return true;
+        }
       } catch (e) {
         print("[on_audio_error]" + e.toString());
       }
@@ -209,8 +233,8 @@ class _PlaylistDao {
     int playlistKey,
     int id,
   ) {
-    var tempEntity = initPlaylistDb.get(playlistKey)!.playlistSongs;
-    return tempEntity.firstWhere((element) => element.id == id);
+    var tmpEntity = initPlaylistDb.get(playlistKey)!.playlistSongs;
+    return tmpEntity.firstWhere((element) => element.id == id);
   }
 
   /// [queryAllFromPlaylist]
@@ -220,14 +244,14 @@ class _PlaylistDao {
     bool reverse,
     RoomSortType? sortType,
   ) async {
-    var tempEntity = initPlaylistDb.get(playlistKey)!.playlistSongs;
+    var tmpEntity = initPlaylistDb.get(playlistKey)!.playlistSongs;
     List<SongEntity> tempSongsList = [];
 
-    if (tempEntity.isEmpty) return tempSongsList;
+    if (tmpEntity.isEmpty) return tempSongsList;
 
-    for (var i = 0; i < tempEntity.length; i++) {
+    for (var i = 0; i < tmpEntity.length; i++) {
       if (i == limit) break;
-      tempSongsList.add(tempEntity[i]);
+      tempSongsList.add(tmpEntity[i]);
     }
 
     switch (sortType) {

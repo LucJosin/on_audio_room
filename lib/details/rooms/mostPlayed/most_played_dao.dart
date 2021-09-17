@@ -7,7 +7,17 @@ class _MostPlayedDao {
       Hive.box<MostPlayedEntity>("on_most_played_room");
 
   /// addToMostPlayed
-  Future<int?> addToMostPlayed(MostPlayedEntity entity) async {
+  Future<int?> addToMostPlayed(
+    MostPlayedEntity entity,
+    bool ignoreDuplicate,
+  ) async {
+    // This will check if already exist a song with the same id.
+    if (!ignoreDuplicate) {
+      for (var i = 0; i < initMostPlayedDb.length; i++) {
+        if (initMostPlayedDb.get(i)?.id == entity.id) return 0;
+      }
+    }
+    //
     try {
       await initMostPlayedDb.put(entity.key, entity);
       return entity.key;

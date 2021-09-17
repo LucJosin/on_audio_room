@@ -1,3 +1,13 @@
+## [2.1.1] - [09.17.2021]
+### Features
+- **[Added]** `ignoreDuplicate` parameter to `[addTo]` and `[createPlaylist]`.
+
+### Fixes
+- **[Fixed]** playlist method not saving data. - [#6](https://github.com/LucasPJS/on_audio_room/issues/6)
+
+### Documentation
+- Updated `README` documentation.
+
 ## [2.1.0] - [09.15.2021]
 ### Features
 - **[Added]** `getMap` to `[SongEntity]` as `extension`, this will help to convert `[SongEntity]` to `[SongModel]`. - [#3](https://github.com/LucasPJS/on_audio_room/issues/3)
