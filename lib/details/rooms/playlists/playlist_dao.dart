@@ -13,9 +13,9 @@ class _PlaylistDao {
   ) async {
     // This will check if already exist a playlist with the same name.
     if (!ignoreDuplicate) {
+      var tmpEntity = initPlaylistDb.values.toList();
       for (var i = 0; i < initPlaylistDb.length; i++) {
-        var tmpEntity = initPlaylistDb.values.toList();
-        if (tmpEntity[0].playlistName == entity.playlistName) return 0;
+        if (tmpEntity[i].playlistName == entity.playlistName) return 0;
       }
     }
 
