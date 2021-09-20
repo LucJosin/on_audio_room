@@ -13,9 +13,14 @@ class _PlaylistDao {
   ) async {
     // This will check if already exist a playlist with the same name.
     if (!ignoreDuplicate) {
-      var tmpEntity = initPlaylistDb.values.toList();
-      for (var i = 0; i < initPlaylistDb.length; i++) {
-        if (tmpEntity[i].playlistName == entity.playlistName) return 0;
+      var tmpEntities = initPlaylistDb.values.toList();
+      for (int i = 0; i < initPlaylistDb.length; i++) {
+        // The name in lowercase to make it more accurate.
+        String indexEntity = tmpEntities[i].playlistName.toLowerCase();
+        String currentEntity = entity.playlistName.toLowerCase();
+
+        //
+        if (indexEntity == currentEntity) return 0;
       }
     }
 
@@ -36,7 +41,7 @@ class _PlaylistDao {
   Future<bool> deletePlaylist(int key) async {
     if (initPlaylistDb.containsKey(key)) {
       try {
-        return await initPlaylistDb.delete(key).then((value) => true);
+        return await initPlaylistDb.delete(key).then((_) => true);
       } catch (e) {
         print("[on_audio_error]" + e.toString());
       }
