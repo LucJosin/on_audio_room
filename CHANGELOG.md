@@ -1,9 +1,9 @@
 ## [2.2.0] - [09.20.2021]
 ### Features
-- **[Added]** Now `ignoreDuplicate` will convert the name to lowercase and make it more accurate.
+- **[Added]** a convert to lowercase and make the `check` more accurate when using `ignoreDuplicate`.
 
 ### Fixes
-- **[Fixed]** Fix for `ignoreDuplicate` in `[createPlaylist]`. - Thanks [@giga10](https://github.com/giga10)
+- **[Fixed]** `ignoreDuplicate` in `[createPlaylist]`. - Thanks [@giga10](https://github.com/giga10)
 
 ## [2.1.1] - [09.17.2021]
 ### Features
