@@ -30,7 +30,7 @@ NOTE: Feel free to help with readme translations
 Add the following code to your `pubspec.yaml`:
 ```yaml
 dependencies:
-  on_audio_room: ^2.0.0
+  on_audio_room: ^2.2.0
 ```
 
 ## Some Features:

@@ -13,15 +13,25 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  # Database
   hive: ^2.0.4
   hive_flutter: ^1.1.0
+
+  # UUID Generator
   nanoid: ^1.0.0
+
+  # FLutter
   flutter:
     sdk: flutter
 
 dev_dependencies:
+  # Database
   hive_generator: ^1.1.0
+
+  # Code Generator
   build_runner: ^2.0.6
+
+  # Flutter
   flutter_lints: ^1.0.4
   flutter_test:
     sdk: flutter

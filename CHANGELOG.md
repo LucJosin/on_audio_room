@@ -5,6 +5,10 @@
 ### Fixes
 - **[Fixed]** `ignoreDuplicate` in `[createPlaylist]`. - Thanks [@giga10](https://github.com/giga10)
 
+### Documentation
+- Updated `README` documentation.
+- Updated `OnAudioRoom` and `OnAudioRoomExample` documentation to support new `[Flutter 2.5]`.
+
 ## [2.1.1] - [09.17.2021]
 ### Features
 - **[Added]** `ignoreDuplicate` parameter to `[addTo]` and `[createPlaylist]`.
@@ -25,7 +29,7 @@
 
 ### Documentation
 - Updated `README` documentation.
-- Updated `OnAudioRoomExample` documentation to support new `[Flutter 2.5]`.
+- ~~Updated `OnAudioRoomExample` documentation to support new `[Flutter 2.5]`~~.
 
 ## [2.0.0] - [07.29.2021]
 ### Release
