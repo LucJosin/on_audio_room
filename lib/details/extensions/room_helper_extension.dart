@@ -5,9 +5,9 @@ extension OnSongsListHelper on List<SongEntity> {
   /// Used to get all [ids] from a list of [SongEntity].
   List<int> get getAllIds {
     List<int> tempKeyList = [];
-    this.forEach((entity) {
+    for (var entity in this) {
       tempKeyList.add(entity.id);
-    });
+    }
     return tempKeyList;
   }
 
@@ -15,9 +15,9 @@ extension OnSongsListHelper on List<SongEntity> {
   List<Map> get getListOfMap {
     List<Map> tempList = [];
 
-    this.forEach((entity) {
+    for (var entity in this) {
       tempList.add(entity.getMap);
-    });
+    }
 
     return tempList;
   }
@@ -28,17 +28,17 @@ extension OnSongsHelper on SongEntity {
   /// A helper to get the [SongEntity] as a [Map].
   Map get getMap {
     Map tempKeyMap = {
-      "_data": this.lastData,
-      "_display_name": this.displayName,
-      "_id": this.id,
-      "album": this.album,
-      "album_id": this.albumId,
-      "artist": this.artist,
-      "artist_id": this.artistId,
-      "date_added": this.dateAdded,
-      "duration": this.duration,
-      "title": this.title,
-      "artwork": this.artworkAsBytes,
+      "_data": lastData,
+      "_display_name": displayName,
+      "_id": id,
+      "album": album,
+      "album_id": albumId,
+      "artist": artist,
+      "artist_id": artistId,
+      "date_added": dateAdded,
+      "duration": duration,
+      "title": title,
+      "artwork": artworkAsBytes,
     };
     return tempKeyMap;
   }
@@ -49,9 +49,9 @@ extension OnFavoritesListHelper on List<FavoritesEntity> {
   /// Used to get all [keys] from a list of [FavoritesEntity].
   List<int> get getAllKeys {
     List<int> tempKeyList = [];
-    this.forEach((entity) {
+    for (var entity in this) {
       tempKeyList.add(entity.key);
-    });
+    }
     return tempKeyList;
   }
 
@@ -59,9 +59,9 @@ extension OnFavoritesListHelper on List<FavoritesEntity> {
   Map<dynamic, FavoritesEntity> get formatEntity {
     Map<dynamic, FavoritesEntity> tempMap = {};
     //
-    this.forEach((entity) {
+    for (var entity in this) {
       tempMap[entity.key] = entity;
-    });
+    }
     return tempMap;
   }
 
@@ -69,9 +69,9 @@ extension OnFavoritesListHelper on List<FavoritesEntity> {
   List<Map> get getListOfMap {
     List<Map> tempList = [];
 
-    this.forEach((entity) {
+    for (var entity in this) {
       tempList.add(entity.getMap);
-    });
+    }
 
     return tempList;
   }
@@ -82,17 +82,17 @@ extension OnFavoritesHelper on FavoritesEntity {
   /// A helper to get the [FavoritesEntity] as a [Map].
   Map get getMap {
     Map tempKeyMap = {
-      "_data": this.lastData,
-      "_display_name": this.displayName,
-      "_id": this.id,
-      "album": this.album,
-      "album_id": this.albumId,
-      "artist": this.artist,
-      "artist_id": this.artistId,
-      "date_added": this.dateAdded,
-      "duration": this.duration,
-      "title": this.title,
-      "artwork": this.artworkAsBytes,
+      "_data": lastData,
+      "_display_name": displayName,
+      "_id": id,
+      "album": album,
+      "album_id": albumId,
+      "artist": artist,
+      "artist_id": artistId,
+      "date_added": dateAdded,
+      "duration": duration,
+      "title": title,
+      "artwork": artworkAsBytes,
     };
     return tempKeyMap;
   }
@@ -103,9 +103,9 @@ extension OnLastPlayedListHelper on List<LastPlayedEntity> {
   /// Used to get all [keys] from a list of [LastPlayedEntity].
   List<int> get getAllKeys {
     List<int> tempKeyList = [];
-    this.forEach((entity) {
+    for (var entity in this) {
       tempKeyList.add(entity.key);
-    });
+    }
     return tempKeyList;
   }
 
@@ -113,9 +113,9 @@ extension OnLastPlayedListHelper on List<LastPlayedEntity> {
   Map<dynamic, LastPlayedEntity> get formatEntity {
     Map<dynamic, LastPlayedEntity> tempMap = {};
     //
-    this.forEach((entity) {
+    for (var entity in this) {
       tempMap[entity.key] = entity;
-    });
+    }
     return tempMap;
   }
 
@@ -123,9 +123,9 @@ extension OnLastPlayedListHelper on List<LastPlayedEntity> {
   List<Map> get getListOfMap {
     List<Map> tempList = [];
 
-    this.forEach((entity) {
+    for (var entity in this) {
       tempList.add(entity.getMap);
-    });
+    }
 
     return tempList;
   }
@@ -136,17 +136,17 @@ extension OnLastPlayedHelper on LastPlayedEntity {
   /// A helper to get the [LastPlayedEntity] as a [Map].
   Map get getMap {
     Map tempKeyMap = {
-      "_data": this.lastData,
-      "_display_name": this.displayName,
-      "_id": this.id,
-      "album": this.album,
-      "album_id": this.albumId,
-      "artist": this.artist,
-      "artist_id": this.artistId,
-      "date_added": this.dateAdded,
-      "duration": this.duration,
-      "title": this.title,
-      "artwork": this.artworkAsBytes,
+      "_data": lastData,
+      "_display_name": displayName,
+      "_id": id,
+      "album": album,
+      "album_id": albumId,
+      "artist": artist,
+      "artist_id": artistId,
+      "date_added": dateAdded,
+      "duration": duration,
+      "title": title,
+      "artwork": artworkAsBytes,
     };
     return tempKeyMap;
   }
@@ -157,9 +157,9 @@ extension OnMostPlayedListHelper on List<MostPlayedEntity> {
   /// Used to get all [keys] from a list of [MostPlayedEntity].
   List<int> get getAllKeys {
     List<int> tempKeyList = [];
-    this.forEach((entity) {
+    for (var entity in this) {
       tempKeyList.add(entity.key);
-    });
+    }
     return tempKeyList;
   }
 
@@ -167,9 +167,9 @@ extension OnMostPlayedListHelper on List<MostPlayedEntity> {
   Map<dynamic, MostPlayedEntity> get formatEntity {
     Map<dynamic, MostPlayedEntity> tempMap = {};
     //
-    this.forEach((entity) {
+    for (var entity in this) {
       tempMap[entity.key] = entity;
-    });
+    }
     return tempMap;
   }
 
@@ -177,9 +177,9 @@ extension OnMostPlayedListHelper on List<MostPlayedEntity> {
   List<Map> get getListOfMap {
     List<Map> tempList = [];
 
-    this.forEach((entity) {
+    for (var entity in this) {
       tempList.add(entity.getMap);
-    });
+    }
 
     return tempList;
   }
@@ -190,17 +190,17 @@ extension OnMostPlayedHelper on MostPlayedEntity {
   /// A helper to get the [MostPlayedEntity] as a [Map].
   Map get getMap {
     Map tempKeyMap = {
-      "_data": this.lastData,
-      "_display_name": this.displayName,
-      "_id": this.id,
-      "album": this.album,
-      "album_id": this.albumId,
-      "artist": this.artist,
-      "artist_id": this.artistId,
-      "date_added": this.dateAdded,
-      "duration": this.duration,
-      "title": this.title,
-      "artwork": this.artworkAsBytes,
+      "_data": lastData,
+      "_display_name": displayName,
+      "_id": id,
+      "album": album,
+      "album_id": albumId,
+      "artist": artist,
+      "artist_id": artistId,
+      "date_added": dateAdded,
+      "duration": duration,
+      "title": title,
+      "artwork": artworkAsBytes,
     };
     return tempKeyMap;
   }

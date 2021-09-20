@@ -245,11 +245,12 @@ class OnAudioRoom {
       "[addTo] - [entity] isn't a instance of Entity\n"
       "Choose one of the existing entities",
     );
-    if (roomType == RoomType.PLAYLIST && playlistKey == null)
+    if (roomType == RoomType.PLAYLIST && playlistKey == null) {
       throw Exception(
         "Cannot add [entity] to a undefined [playlist]\n"
         "Define the [playlistKey] parameter.",
       );
+    }
     return await _controller.addToController(
       roomType,
       entity,
@@ -348,11 +349,12 @@ class OnAudioRoom {
         OnEntityChecker(entities).isEntity(roomType),
         "[addAllTo] - [entities] isn't a instance of Entity\n"
         "Choose one of the existing entities");
-    if (roomType == RoomType.PLAYLIST && playlistKey == null)
+    if (roomType == RoomType.PLAYLIST && playlistKey == null) {
       throw Exception(
         "Cannot add [entity] to a undefined [playlist]\n"
         "Define the [playlistKey] parameter.",
       );
+    }
     return await _controller.addAllToController(
       roomType,
       entities,
@@ -408,11 +410,12 @@ class OnAudioRoom {
     int entityKey, {
     int? playlistKey,
   }) async {
-    if (roomType == RoomType.PLAYLIST && playlistKey == null)
+    if (roomType == RoomType.PLAYLIST && playlistKey == null) {
       throw Exception(
         "Cannot add [entity] to a undefined [playlist]\n"
         "Define the [playlistKey] parameter.",
       );
+    }
     return await _controller.deleteFromController(
       roomType,
       entityKey,
@@ -443,11 +446,12 @@ class OnAudioRoom {
     List<int> keys, {
     int? playlistKey,
   }) async {
-    if (roomType == RoomType.PLAYLIST && playlistKey == null)
+    if (roomType == RoomType.PLAYLIST && playlistKey == null) {
       throw Exception(
         "Cannot add [entity] to a undefined [playlist]\n"
         "Define the [playlistKey] parameter.",
       );
+    }
     return await _controller.deleteAllFromController(
       roomType,
       keys,
@@ -473,11 +477,12 @@ class OnAudioRoom {
   /// * [deleteFrom]
   /// * [checkIn]
   Future<bool> clearRoom(RoomType roomType, {int? playlistKey}) async {
-    if (roomType == RoomType.PLAYLIST && playlistKey == null)
+    if (roomType == RoomType.PLAYLIST && playlistKey == null) {
       throw Exception(
         "Cannot add [entity] to a undefined [playlist]\n"
         "Define the [playlistKey] parameter.",
       );
+    }
     return await _controller.clearController(
       roomType,
       playlistKey: playlistKey,
@@ -515,11 +520,12 @@ class OnAudioRoom {
     int entityKey, {
     int? playlistKey,
   }) async {
-    if (roomType == RoomType.PLAYLIST && playlistKey == null)
+    if (roomType == RoomType.PLAYLIST && playlistKey == null) {
       throw Exception(
         "Cannot add [entity] to a undefined [playlist]\n"
         "Define the [playlistKey] parameter.",
       );
+    }
     return await _controller.checkController(
       roomType,
       entityKey,

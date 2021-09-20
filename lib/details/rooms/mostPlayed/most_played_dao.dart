@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 part of on_audio_room;
 
 /// Used to control all methods from [Most Played].
@@ -58,7 +60,7 @@ class _MostPlayedDao {
     if (tempEntity != null) {
       try {
         var oldCount = tempEntity.playCount;
-        tempEntity..playCount = automatic == true ? oldCount + 1 : newCount!;
+        tempEntity.playCount = automatic == true ? oldCount + 1 : newCount!;
         print(tempEntity.playCount);
         return await updateMostPlayed(tempEntity);
       } catch (e) {

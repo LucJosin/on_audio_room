@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 part of on_audio_room;
 
 /// Used to control all methods from [Last Played].

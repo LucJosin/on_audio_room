@@ -45,11 +45,11 @@ class PlaylistEntity {
 
   @override
   String toString() {
-    return "(${this.runtimeType}): " +
-        "key: ${this.key}, " +
-        "playlist_name: ${this.playlistName}, " +
-        "playlist_date_modified: ${this.playlistDateModified}, " +
-        "playlist_date_added: ${this.playlistDateAdded}, " +
-        "playlist_songs (Length): ${this.playlistSongs.length}";
+    return "($runtimeType): "
+        "key: $key, "
+        "playlist_name: $playlistName, "
+        "playlist_date_modified: $playlistDateModified, "
+        "playlist_date_added: $playlistDateAdded, "
+        "playlist_songs (Length): ${playlistSongs.length}";
   }
 }

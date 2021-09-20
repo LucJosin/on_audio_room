@@ -16,18 +16,18 @@ class FavoritesEntity extends SongEntity {
 
   @override
   String toString() {
-    return "(${this.runtimeType}): " +
-        "key: ${this.key}, " +
-        "_data: ${this.lastData}, " +
-        "_display_name: ${this.displayName}, " +
-        "_id: ${this.id}, " +
-        "album: ${this.album}, " +
-        "album_id: ${this.albumId}, " +
-        "artist: ${this.artist}, " +
-        "artist_id: ${this.artistId}, " +
-        "date_added: ${this.dateAdded}, " +
-        "duration: ${this.duration}, " +
-        "title: ${this.title}, " +
-        "artwork (Length): ${this.artworkAsBytes?.length}";
+    return "($runtimeType): "
+        "key: $key, "
+        "_data: $lastData, "
+        "_display_name: $displayName, "
+        "_id: $id, "
+        "album: $album, "
+        "album_id: $albumId, "
+        "artist: $artist, "
+        "artist_id: $artistId, "
+        "date_added: $dateAdded, "
+        "duration: $duration, "
+        "title: $title, "
+        "artwork (Length): ${artworkAsBytes?.length}";
   }
 }

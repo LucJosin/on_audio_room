@@ -33,20 +33,20 @@ class MostPlayedEntity extends SongEntity {
 
   @override
   String toString() {
-    return "(${this.runtimeType}): " +
-        "key: ${this.key}, " +
-        "_data: ${this.lastData}, " +
-        "_display_name: ${this.displayName}, " +
-        "_id: ${this.id}, " +
-        "album: ${this.album}, " +
-        "album_id: ${this.albumId}, " +
-        "artist: ${this.artist}, " +
-        "artist_id: ${this.artistId}, " +
-        "date_added: ${this.dateAdded}, " +
-        "duration: ${this.duration}, " +
-        "artwork (Length): ${this.artworkAsBytes?.length}, " +
-        "time_played: ${this.timePlayed}, " +
-        "last_time_played: ${this.lastTimePlayed}, " +
-        "play_count: ${this.playCount}";
+    return "($runtimeType): "
+        "key: $key, "
+        "_data: $lastData, "
+        "_display_name: $displayName, "
+        "_id: $id, "
+        "album: $album, "
+        "album_id: $albumId, "
+        "artist: $artist, "
+        "artist_id: $artistId, "
+        "date_added: $dateAdded, "
+        "duration: $duration, "
+        "artwork (Length): ${artworkAsBytes?.length}, "
+        "time_played: $timePlayed, "
+        "last_time_played: $lastTimePlayed, "
+        "play_count: $playCount";
   }
 }

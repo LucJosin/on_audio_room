@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 part of on_audio_room;
 
 /// [RoomType] will define which room you need to use.

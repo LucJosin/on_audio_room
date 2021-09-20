@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 part of on_audio_room;
 
 class _PlaylistDao {
@@ -79,7 +81,7 @@ class _PlaylistDao {
   Future<bool> updatePlaylist(PlaylistEntity entity) async {
     if (initPlaylistDb.containsKey(entity.key)) {
       try {
-        entity..playlistDateModified = DateTime.now().millisecondsSinceEpoch;
+        entity.playlistDateModified = DateTime.now().millisecondsSinceEpoch;
         await initPlaylistDb.put(entity.key, entity);
         return true;
       } catch (e) {
@@ -126,7 +128,7 @@ class _PlaylistDao {
     if (initPlaylistDb.containsKey(playlistKey)) {
       try {
         PlaylistEntity tmpEntity = initPlaylistDb.get(playlistKey)!;
-        tmpEntity..playlistDateModified = DateTime.now().millisecondsSinceEpoch;
+        tmpEntity.playlistDateModified = DateTime.now().millisecondsSinceEpoch;
         tmpEntity.playlistSongs.add(entity);
         await updatePlaylist(tmpEntity);
         return entity.id;
@@ -145,7 +147,7 @@ class _PlaylistDao {
     List<int> ids = [];
     try {
       PlaylistEntity tmpEntity = initPlaylistDb.get(playlistKey)!;
-      tmpEntity..playlistDateModified = DateTime.now().millisecondsSinceEpoch;
+      tmpEntity.playlistDateModified = DateTime.now().millisecondsSinceEpoch;
       tmpEntity.playlistSongs.addAll(entities);
       ids.addAll(entities.getAllIds);
       await updatePlaylist(tmpEntity);
@@ -182,7 +184,7 @@ class _PlaylistDao {
     if (initPlaylistDb.containsKey(playlistKey)) {
       try {
         PlaylistEntity tmpEntity = initPlaylistDb.get(playlistKey)!;
-        tmpEntity..playlistDateModified = DateTime.now().millisecondsSinceEpoch;
+        tmpEntity.playlistDateModified = DateTime.now().millisecondsSinceEpoch;
         tmpEntity.playlistSongs.removeWhere((element) => element.id == id);
         return await updatePlaylist(tmpEntity);
       } catch (e) {
@@ -209,7 +211,7 @@ class _PlaylistDao {
   Future<bool> clearPlaylist(int playlistKey) async {
     try {
       PlaylistEntity tmpEntity = initPlaylistDb.get(playlistKey)!;
-      tmpEntity..playlistDateModified = DateTime.now().millisecondsSinceEpoch;
+      tmpEntity.playlistDateModified = DateTime.now().millisecondsSinceEpoch;
       tmpEntity.playlistSongs.clear();
       return await updatePlaylist(tmpEntity);
     } catch (e) {

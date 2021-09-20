@@ -65,7 +65,7 @@ extension OnRoom on RoomType {
         return Hive.box<LastPlayedEntity>("on_last_played_room");
       case RoomType.MOST_PLAYED:
         return Hive.box<MostPlayedEntity>("on_most_played_room");
-      case RoomType.FAVORITES:
+      case RoomType.PLAYLIST:
         return Hive.box<PlaylistEntity>("on_playlists_room");
       default:
         throw "[getRoomInfo] - [roomType] doesn't return a real Room\n"

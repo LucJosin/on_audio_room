@@ -5,10 +5,11 @@ extension OnEntityChecker on dynamic {
   /// Used to check if the [dynamic] parameter is a [Entity] or no. This check is
   /// based on [RoomType] parameter.
   bool isEntity(RoomType roomType) {
-    if (this == null)
+    if (this == null) {
       return throw Exception(
         "[isEntity] - [entity] cannot be null",
       );
+    }
     switch (roomType) {
       case RoomType.FAVORITES:
         return this is FavoritesEntity ||

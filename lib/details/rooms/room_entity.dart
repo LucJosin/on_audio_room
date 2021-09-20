@@ -25,10 +25,10 @@ class RoomEntity {
 
   @override
   String toString() {
-    return "[Name]: $name" +
-        "[Path]: $path" +
-        "[Status]: $isOpen" +
-        "[Empty]: $isEmpty" +
+    return "[Name]: $name, "
+        "[Path]: $path, "
+        "[Status]: $isOpen, "
+        "[Empty]: $isEmpty, "
         "[Size]: $length";
   }
 }

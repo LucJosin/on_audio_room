@@ -91,8 +91,7 @@ extension OnEntityFormatter on Map {
   ///   * @NonNull title
   ///   * artwork
   LastPlayedEntity toLastPlayedEntity(int timePlayed, {int? lastTimePlayed}) {
-    if (lastTimePlayed == null)
-      lastTimePlayed = DateTime.now().millisecondsSinceEpoch;
+    lastTimePlayed ??= DateTime.now().millisecondsSinceEpoch;
     return LastPlayedEntity(_getUniqueKey, timePlayed, lastTimePlayed)
       ..lastData = this["_data"]
       ..displayName = this["_display_name"]
@@ -132,9 +131,8 @@ extension OnEntityFormatter on Map {
     int? lastTimePlayed,
     int? playCount,
   }) {
-    if (lastTimePlayed == null)
-      lastTimePlayed = DateTime.now().millisecondsSinceEpoch;
-    if (playCount == null) playCount = 0;
+    lastTimePlayed ??= DateTime.now().millisecondsSinceEpoch;
+    playCount ??= 0;
     return MostPlayedEntity(
         _getUniqueKey, timePlayed, lastTimePlayed, playCount)
       ..lastData = this["_data"]
