@@ -12,12 +12,14 @@ Copyright: © 2021, Lucas Josino. All rights reserved.
 =============
 */
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:on_audio_room/on_audio_room.dart';
 
 void main() async {
-  //Init Room.
+  //  Init Room.
   await OnAudioRoom().initRoom(RoomType.FAVORITES);
   runApp(
     const MaterialApp(
@@ -34,7 +36,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  //Call audio room.
+  //  Call audio room.
   final OnAudioRoom _audioRoom = OnAudioRoom();
   final OnAudioQuery _audioQuery = OnAudioQuery();
 
@@ -54,8 +56,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void dispose() {
-    //Remember to close room to avoid memory leaks.
-    //Choose the better location(page) to add this method.
+    //  Remember to close room to avoid memory leaks.
+    //  Choose the better location(page) to add this method.
     _audioRoom.closeRoom();
     super.dispose();
   }
@@ -77,55 +79,60 @@ class _MyAppState extends State<MyApp> {
         ],
       ),
       body: FutureBuilder<List<SongModel>>(
-        //In this example we will use [on_audio_query] to query songs from device.
+        //  In this example we will use [on_audio_query] to query songs from device.
         future: OnAudioQuery().querySongs(),
         builder: (_, item) {
           if (item.data != null) {
             List<SongModel> songs = item.data!;
-            //Display only 10 because it's only a example.
+            //  Display only 10 because it's only a example.
             return ListView.builder(
               itemCount: songs.length,
               itemBuilder: (_, index) {
                 return ListTile(
                   title: Text(songs[index].title),
                   subtitle: Text(songs[index].artist ?? "No artist"),
-                  //First method from [on_audio_room], here we'll add the selected song
-                  //inside the favorites room.
+                  //  First method from [on_audio_room], here we'll add the selected song
+                  //  inside the favorites room.
                   onTap: () async {
-                    //If songs has addded to favorites the result will be the song [key], if not, will be [null].
+                    //  If songs has addded to favorites the result will be the song [key], if not, will be [null].
                     //
-                    //There's two ways to convert song information to a [Entity].
+                    //  There's two ways to convert song information to a [Entity].
                     //
-                    //First method(Manually):
-                    //  Create a Map<dynamic, dynamic> with all this keys and a value.
+                    //  First method(Manually):
+                    //    Create a Map<dynamic, dynamic> with all this keys and a value.
                     //
-                    // * _data
-                    // * _display_name
-                    // * _id
-                    // * album
-                    // * album_id
-                    // * artist
-                    // * artist_id
-                    // * date_added
-                    // * duration
-                    // * title
-                    // * artwork
+                    //  * _data
+                    //  * _display_name
+                    //  * _id
+                    //  * album
+                    //  * album_id
+                    //  * artist
+                    //  * artist_id
+                    //  * date_added
+                    //  * duration
+                    //  * title
+                    //  * artwork
                     //
                     //  After this you can call a method to convert to [Entity]:
                     //    yourMapName.to*Type*Entity();
                     //
-                    //Second method(using on_audio_query):
-                    //  From your [SongModel] just call [toMap] and then [to*Type*Entity()].
+                    //  Second method(using on_audio_query):
+                    //    From your [SongModel] just call [toMap] and then [to*Type*Entity()].
 
-                    //This example we use the [on_audio_query] plugin:
+                    // This example we use the [on_audio_query] plugin:
                     _audioRoom.addTo(
-                      RoomType.FAVORITES, //Specify the room type
+                      RoomType.FAVORITES, // Specify the room type
                       songs[index].getMap.toFavoritesEntity(),
+                      ignoreDuplicate: false, // Avoid the same song
                     );
                   },
-                  //Other method, this will clear all the room.
+                  //  Other method, this will clear all the room.
                   onLongPress: () async {
-                    _audioRoom.clearRoom(RoomType.FAVORITES);
+                    bool isAdded = await _audioRoom.checkIn(
+                      RoomType.FAVORITES,
+                      songs[index].id,
+                    );
+                    log('$isAdded');
                   },
                 );
               },
@@ -148,25 +155,34 @@ class Information extends StatefulWidget {
 }
 
 class _InformationState extends State<Information> {
-  //Call audio room.
-  OnAudioRoom audioRoom = OnAudioRoom();
+  //  Call audio room.
+  final OnAudioRoom _audioRoom = OnAudioRoom();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("OnAudioRoomExample"),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              await _audioRoom.clearRoom(RoomType.FAVORITES);
+              setState(() {});
+            },
+            icon: const Icon(Icons.delete_forever_rounded),
+          )
+        ],
       ),
       body: Center(
-        //Add to the future builder the specific type.
+        //  Add to the future builder the specific type.
         child: FutureBuilder<List<FavoritesEntity>>(
-          //Default limit: 50
-          //Default reverse: false
-          //Default sortType: key
+          //  Default limit: 50
+          //  Default reverse: false
+          //  Default sortType: key
           future: OnAudioRoom().queryFavorites(
             limit: 50,
             reverse: false,
-            sortType: null, //Null will use the [key] has sort.
+            sortType: null, //  Null will use the [key] has sort.
           ),
           builder: (context, item) {
             if (item.data == null) return const CircularProgressIndicator();
@@ -181,12 +197,12 @@ class _InformationState extends State<Information> {
                   title: Text(favorites[index].title),
                   subtitle: Text(favorites[index].dateAdded.toString()),
                   onTap: () async {
-                    //Most the method will return a bool to indicate if method works.
-                    await audioRoom.deleteFrom(
+                    //  Most the method will return a bool to indicate if method works.
+                    await _audioRoom.deleteFrom(
                       RoomType.FAVORITES,
                       favorites[index].key,
                     );
-                    //Call setState to see the result,
+                    //  Call setState to see the result,
                     setState(() {});
                   },
                 );

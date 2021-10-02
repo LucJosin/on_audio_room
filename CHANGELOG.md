@@ -1,3 +1,15 @@
+## [2.2.1] - [10.02.2021]
+### Fixes
+- **[Fixed]** wrong `ignoreDuplicate` method on all `[addTo]` methods.
+- **[Fixed]** wrong value returning from `checkIn`. - [#9](https://github.com/LucasPJS/on_audio_room/issues/9)
+
+### Documentation
+- Updated `README` documentation.
+- Updated `OnAudioRoomExample`.
+
+### Changes
+- **[Changed]** the `key` value from `[Favorites]`, `[LastPlayed]` and `[MostPlayed]` entities to song `id` instead of a generated value.
+
 ## [2.2.0] - [09.20.2021]
 ### Features
 - **[Added]** a conversion to lowercase and make the `check` more accurate when using `ignoreDuplicate`.

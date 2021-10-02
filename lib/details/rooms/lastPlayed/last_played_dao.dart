@@ -16,7 +16,7 @@ class _LastPlayedDao {
     // This will check if already exist a song with the same id.
     if (!ignoreDuplicate) {
       for (var i = 0; i < initLastPlayedDb.length; i++) {
-        if (initLastPlayedDb.get(i)?.id == entity.id) return 0;
+        if (initLastPlayedDb.getAt(i)?.id == entity.id) return 0;
       }
     }
     //
@@ -90,9 +90,9 @@ class _LastPlayedDao {
   }
 
   /// checkInLastPlayed
-  bool checkInLastPlayed(int key) {
+  bool checkInLastPlayed(int entityKey) {
     try {
-      return initLastPlayedDb.containsKey(key);
+      return initLastPlayedDb.containsKey(entityKey);
     } catch (e) {
       print("[on_audio_error]" + e.toString());
     }

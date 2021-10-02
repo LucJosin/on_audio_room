@@ -16,7 +16,7 @@ class _MostPlayedDao {
     // This will check if already exist a song with the same id.
     if (!ignoreDuplicate) {
       for (var i = 0; i < initMostPlayedDb.length; i++) {
-        if (initMostPlayedDb.get(i)?.id == entity.id) return 0;
+        if (initMostPlayedDb.getAt(i)?.id == entity.id) return 0;
       }
     }
     //
@@ -106,9 +106,9 @@ class _MostPlayedDao {
   }
 
   /// checkInMostPlayed
-  bool checkInMostPlayed(int key) {
+  bool checkInMostPlayed(int entityKey) {
     try {
-      return initMostPlayedDb.containsKey(key);
+      return initMostPlayedDb.containsKey(entityKey);
     } catch (e) {
       print("[on_audio_error]" + e.toString());
     }

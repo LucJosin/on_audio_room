@@ -1,11 +1,7 @@
 import 'package:on_audio_room/on_audio_room.dart';
-import 'package:nanoid/nanoid.dart';
 
 /// A [on_audio_room] extension to help the package.
 extension OnEntityFormatter on Map {
-  /// Generate a unique key.
-  int get _getUniqueKey => int.parse(customAlphabet("123456789", 8));
-
   /// Used to parse a [Map] into a [SongEntity].
   ///
   /// Important & Paramaters:
@@ -57,7 +53,7 @@ extension OnEntityFormatter on Map {
   ///   * @NonNull title
   ///   * artwork
   FavoritesEntity toFavoritesEntity() {
-    return FavoritesEntity(_getUniqueKey)
+    return FavoritesEntity(this["_id"] as int)
       ..lastData = this["_data"]
       ..displayName = this["_display_name"]
       ..id = this["_id"]
@@ -92,7 +88,7 @@ extension OnEntityFormatter on Map {
   ///   * artwork
   LastPlayedEntity toLastPlayedEntity(int timePlayed, {int? lastTimePlayed}) {
     lastTimePlayed ??= DateTime.now().millisecondsSinceEpoch;
-    return LastPlayedEntity(_getUniqueKey, timePlayed, lastTimePlayed)
+    return LastPlayedEntity(this["_id"] as int, timePlayed, lastTimePlayed)
       ..lastData = this["_data"]
       ..displayName = this["_display_name"]
       ..id = this["_id"]
@@ -134,7 +130,7 @@ extension OnEntityFormatter on Map {
     lastTimePlayed ??= DateTime.now().millisecondsSinceEpoch;
     playCount ??= 0;
     return MostPlayedEntity(
-        _getUniqueKey, timePlayed, lastTimePlayed, playCount)
+        this["_id"] as int, timePlayed, lastTimePlayed, playCount)
       ..lastData = this["_data"]
       ..displayName = this["_display_name"]
       ..id = this["_id"]

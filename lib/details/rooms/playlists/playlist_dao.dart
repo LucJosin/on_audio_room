@@ -221,12 +221,12 @@ class _PlaylistDao {
   }
 
   /// [checkInPlaylist]
-  bool checkInPlaylist(int playlistKey, int id) {
+  bool checkInPlaylist(int playlistKey, int entityKey) {
     if (initPlaylistDb.containsKey(playlistKey)) {
       try {
         var tmpEntity = initPlaylistDb.get(playlistKey)!.playlistSongs;
         for (var entity in tmpEntity) {
-          if (entity.id == id) return true;
+          if (entity.id == entityKey) return true;
         }
       } catch (e) {
         print("[on_audio_error]" + e.toString());

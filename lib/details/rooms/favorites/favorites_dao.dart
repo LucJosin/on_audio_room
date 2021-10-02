@@ -16,7 +16,7 @@ class _FavoritesDao {
     // This will check if already exist a song with the same id.
     if (!ignoreDuplicate) {
       for (var i = 0; i < initFavoritesDb.length; i++) {
-        if (initFavoritesDb.get(i)?.id == entity.id) return 0;
+        if (initFavoritesDb.getAt(i)?.id == entity.id) return 0;
       }
     }
     //
@@ -90,9 +90,9 @@ class _FavoritesDao {
   }
 
   /// checkInFavorites
-  bool checkInFavorites(int key) {
+  bool checkInFavorites(int entityKey) {
     try {
-      return initFavoritesDb.containsKey(key);
+      return initFavoritesDb.containsKey(entityKey);
     } catch (e) {
       print("[on_audio_error]" + e.toString());
     }
