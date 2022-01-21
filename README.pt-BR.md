@@ -5,12 +5,12 @@
 
 `on_audio_room` é um [Flutter](https://flutter.dev/) Package usado para criar um "quarto" para guardar informações dos audios [Favoritos, Playlist Interna, Mais Tocadas, etc...]. <br>
 
-Esse Package funciona como uma "extenção" para [on_audio_query](https://github.com/LucasPJS/on_audio_query) e alguns métodos irão depender dele.
+Esse Package funciona como uma "extenção" para [on_audio_query](https://github.com/LucJosin/on_audio_query) e alguns métodos irão depender dele.
 
 ## Ajuda:
 
-**Algum problema? [Issues](https://github.com/LucasPJS/on_audio_room/issues)** <br>
-**Alguma sugestão? [Pull request](https://github.com/LucasPJS/on_audio_room/pulls)**
+**Algum problema? [Issues](https://github.com/LucJosin/on_audio_room/issues)** <br>
+**Alguma sugestão? [Pull request](https://github.com/LucJosin/on_audio_room/pulls)**
 
 ### Traduções:
 
@@ -30,7 +30,7 @@ NOTE: Fique à vontade para ajudar nas traduções
 Adicione o seguinte codigo para seu `pubspec.yaml`:
 ```yaml
 dependencies:
-  on_audio_room: ^2.2.1
+  on_audio_room: ^2.2.1+1
 ```
 
 ## Algumas qualidades:
@@ -308,6 +308,6 @@ Todos os tipos de métodos nesse plugin:
 
 ## LICENSE:
 
-* [LICENSE](https://github.com/LucasPJS/on_audio_room/blob/main/LICENSE)
+* [LICENSE](https://github.com/LucJosin/on_audio_room/blob/main/LICENSE)
 
 > * [Back to top](#on_audio_room)

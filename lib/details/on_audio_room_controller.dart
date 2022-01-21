@@ -1,13 +1,13 @@
 /*
 =============
 Author: Lucas Josino
-Github: https://github.com/LucasPJS
-Website: https://lucasjosino.com/
+Github: https://github.com/LucJosin
+Website: https://www.lucasjosino.com/
 =============
 Plugin/Id: on_audio_room#4
-Homepage: https://github.com/LucasPJS/on_audio_room
+Homepage: https://github.com/LucJosin/on_audio_room
 Pub: https://pub.dev/packages/on_audio_room
-License: https://github.com/LucasPJS/on_audio_room/blob/main/LICENSE
+License: https://github.com/LucJosin/on_audio_room/blob/main/LICENSE
 Copyright: © 2021, Lucas Josino. All rights reserved.
 =============
 */
@@ -29,13 +29,13 @@ part of on_audio_room;
 ///
 /// See more:
 ///
-/// Homepage: [GitHub](https://github.com/LucasPJS/on_audio_room) <br>
+/// Homepage: [GitHub](https://github.com/LucJosin/on_audio_room) <br>
 ///
 /// Documentation: [API](https://pub.dev/documentation/on_audio_room/latest/)
 ///
-/// Any problem? [Issues](https://github.com/LucasPJS/on_audio_room/issues) <br>
+/// Any problem? [Issues](https://github.com/LucJosin/on_audio_room/issues) <br>
 ///
-/// Any suggestion? [Pull request](https://github.com/LucasPJS/on_audio_room/pulls)
+/// Any suggestion? [Pull request](https://github.com/LucJosin/on_audio_room/pulls)
 class OnAudioRoom {
   /// Internal Controller to keep the package clean and organized.
   _RoomController get _controller => _RoomController();
@@ -210,7 +210,7 @@ class OnAudioRoom {
   ///
   /// ```
   ///
-  /// 2- [OnAudioQuery](https://github.com/LucasPJS/on_audio_query)
+  /// 2- [OnAudioQuery](https://github.com/LucJosin/on_audio_query)
   ///
   /// ```dart
   /// List<SongModel> listOfSongs;
@@ -311,7 +311,7 @@ class OnAudioRoom {
   ///
   /// ```
   ///
-  /// 2- [OnAudioQuery](https://github.com/LucasPJS/on_audio_query)
+  /// 2- [OnAudioQuery](https://github.com/LucJosin/on_audio_query)
   ///
   /// ```dart
   /// List<SongModel> listOfSongs;

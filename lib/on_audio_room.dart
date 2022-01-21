@@ -1,13 +1,13 @@
 /*
 =============
 Author: Lucas Josino
-Github: https://github.com/LucasPJS
-Website: https://lucasjosino.com/
+Github: https://github.com/LucJosin
+Website: https://www.lucasjosino.com/
 =============
 Plugin/Id: on_audio_room#4
-Homepage: https://github.com/LucasPJS/on_audio_room
+Homepage: https://github.com/LucJosin/on_audio_room
 Pub: https://pub.dev/packages/on_audio_room
-License: https://github.com/LucasPJS/on_audio_room/blob/main/LICENSE
+License: https://github.com/LucJosin/on_audio_room/blob/main/LICENSE
 Copyright: © 2021, Lucas Josino. All rights reserved.
 =============
 */
@@ -15,7 +15,6 @@ Copyright: © 2021, Lucas Josino. All rights reserved.
 library on_audio_room;
 
 //Database
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 //Nanoid

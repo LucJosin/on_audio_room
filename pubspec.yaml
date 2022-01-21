@@ -1,12 +1,12 @@
 name: on_audio_room
 description: Flutter Package used to create a room to storage audio sections [Favorites, Internal Playlists, Most Played, etc...].
-version: 2.2.1
-homepage: https://github.com/LucasPJS/on_audio_room
+version: 2.2.1+1
+homepage: https://github.com/LucJosin/on_audio_room
 # pub.dev: https://pub.dev/packages/on_audio_room
 # ========
 # author: Lucas Josino
-# github: https://github.com/LucasPJS
-# website: https://lucasjosino.com/
+# github: https://github.com/LucJosin
+# website: https://www.lucasjosino.com/
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

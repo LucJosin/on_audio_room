@@ -1,3 +1,7 @@
+## [2.2.1+1] - [01.21.2022]
+### Changes
+- **[Updated]** all Github links.
+
 ## [2.2.1] - [10.02.2021]
 ### Fixes
 - **[Fixed]** wrong `ignoreDuplicate` method on all `[addTo]` methods.
